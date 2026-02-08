@@ -11,6 +11,43 @@ subtitle:
     font-size: 17px;
     padding: 0.5em 0.5em;
 }
+
+/* 折叠按钮样式 */
+.toggle-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #45a049;
+}
+
+/* 2025新闻容器样式 - 包含渐变动画 */
+.news-2025-container {
+    max-height: 0;
+    overflow: hidden;
+    /* 渐变动画效果 */
+    transition: max-height 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    opacity: 0;
+}
+
+/* 展开状态的样式 */
+.news-2025-container.expanded {
+    max-height: 1000px; /* 足够大的值容纳所有内容 */
+    opacity: 1;
+}
+
+/* 统一新闻项的样式 */
+.news-item {
+    margin: 8px 0;
+}
 </style>
     
 <div>
@@ -27,18 +64,38 @@ subtitle:
     <li>AI Evaluation</li>
 </ul>
 
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Feb 2026, one paper accepted at PR!</p>
+<!-- 2026年新闻 - 正常显示 -->
+<p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Feb 2026, one paper accepted at PR!</p>
+<p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Jan 2026, join the Editorial Board of Scientific Reports!</p>
+<p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Jan 2026, I am organizing a Special Issue titled <a href="https://www.mdpi.com/journal/mathematics/special_issues/3GL36OKRG4">New Advances in Artificial Intelligence and Robotics Based on Mathematical Methods</a> for the journal <i>mathematics</i> (MDPI). The deadline is 30 November 2026. We warmly welcome your submissions!</p>
 
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Jan 2026, join the Editorial Board of Scientific Reports!</p>
+<!-- 折叠/展开按钮 -->
+<button id="toggleNewsBtn" class="toggle-btn">Show 2025 News</button>
 
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Jan 2026, I am organizing a Special Issue titled <a href="https://www.mdpi.com/journal/mathematics/special_issues/3GL36OKRG4">New Advances in Artificial Intelligence and Robotics Based on Mathematical Methods</a> for the journal <i>mathematics</i> (MDPI). The deadline is 30 November 2026. We warmly welcome your submissions!</p>
+<!-- 2025年新闻 - 默认折叠 -->
+<div id="news2025" class="news-2025-container">
+    <p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Dec 2025, one paper accepted at CVM 2026!</p>
+    <p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Oct 2025, becoming an area chair of ARR 2025!</p>
+    <p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Aug 2025, one paper accepted at TMECH!</p>
+    <p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Jun 2025, one paper accepted at IROS 2025!</p>
+    <p class="news-item" align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Apr 2025, one paper accepted at IJCNN 2025!</p>
+</div>
 
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Dec 2025, one paper accepted at CVM 2026!</p>
+<script>
+// 获取按钮和新闻容器元素
+const toggleBtn = document.getElementById('toggleNewsBtn');
+const news2025Container = document.getElementById('news2025');
 
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Oct 2025, becoming an area chair of ARR 2025!</p>
-
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Aug 2025, one paper accepted at TMECH!</p>
-
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Jun 2025, one paper accepted at IROS 2025!</p>
-
-<p align="left"><img src="/assets/img/new.gif" alt="" width="50" height="50">Apr 2025, one paper accepted at IJCNN 2025!</p>
+// 添加点击事件监听
+toggleBtn.addEventListener('click', function() {
+    // 切换展开/折叠状态
+    news2025Container.classList.toggle('expanded');
+    
+    // 更新按钮文字
+    if (news2025Container.classList.contains('expanded')) {
+        toggleBtn.textContent = 'Hide 2025 News';
+    } else {
+        toggleBtn.textContent = 'Show 2025 News';
+    }
+});
+</script>
