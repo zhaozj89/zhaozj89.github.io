@@ -21,10 +21,10 @@ author: Zhenjie Zhao
 
 navbar-links:
   publication: "publication"
-  teaching: "teaching"
+  # teaching: "teaching"
   service: "service"
   misc: "misc"
-  contact: "contact"
+  # contact: "contact"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
